@@ -29,19 +29,22 @@ class Score(object):
 		return self.__val() <= other.__val()
 		
 	def __add__(self, other):
-		self.goals = self.goals + other.goals
-		self.points = self.points + other.points
-		return self
+		return Score(self.goals+other.goals, self.points+other.points)
 		
 	def __sub__(self, other):
-		self.goals = self.goals - other.goals
-		self.points = self.points - other.points
-		return self
+		return Score(self.goals-other.goals, self.points-other.points)
 		
 	def __iadd__(self, other):
 		self.goals = self.goals + other.goals
 		self.points = self.points + other.points
 		return self
+		#print("\n\n\nIADD:")
+		#print("self: goals={} points={}".format(self.goals,self.points))
+		#print("other: goals={} points={}".format(other.goals,other.points))
+		#print("\n\n\n")
+		#newgoals = self.goals + other.goals
+		#newpoints = self.points + other.points
+		#return Score(newgoals, newpoints)
 		
 	def __isub__(self, other):
 		self.goals = self.goals - other.goals
@@ -108,17 +111,17 @@ def main():
 	print(s2 > s5)
 	print(s2 == s2alias)
 
-#	# In-place subtraction
-#	print('In-place subtraction...')
-#	s2 -= s5
-#	print(s2)
-#	print(s2 > s5)
-#	print(s2 == s2alias)
+	# In-place subtraction
+	print('In-place subtraction...')
+	s2 -= s5
+	print(s2)
+	print(s2 > s5)
+	print(s2 == s2alias)
 
-#	# Sorting
-#	print('Sorting...')#	
-#	for s in sorted([s1, s2, s3, s4, s5, s6], reverse=True):
-#	#	print(s)
+	# Sorting
+	print('Sorting...')#	
+	for s in sorted([s1, s2, s3, s4, s5, s6], reverse=True):
+		print(s)
 	
 if __name__ == "__main__":
 	main()
